@@ -16,15 +16,11 @@ export class PhraseDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.forEach((params: Params) => {
-      const id = +params.id;
-
-      this.svc.getPhrase(id).then(res => this.phrase = res);
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.svc
+        .getPhrase(+params.id)
+        .then(res => this.phrase = res);
     });
   }
 
-  goToPhrasesList(): void {
-    // /phrases
-    this.router.navigate(['/phrases']);
-  }
 }

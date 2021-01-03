@@ -16,6 +16,7 @@ button {
   padding: 7px 15px;
   border-radius: 7px;
   border: 1px solid gray;
+  cursor: pointer;
 }
 
 nav a {
@@ -50,6 +51,13 @@ nav a {
       padding-left: 15px;
       padding-right: 15px;
       background-color: lightcoral;
+    }
+
+    &.selected {
+      padding-left: 15px;
+      padding-right: 15px;
+      font-weight: bold;
+      background-color: lightskyblue;
     }
   }
 }
