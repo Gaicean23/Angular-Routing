@@ -30,7 +30,7 @@ export class PhraseListComponent implements OnInit {
   onSelect(selected: Phrase): void {
 
     // идём в /phrase 1 к примеру
-    this.router.navigate(['/phrases', selected.id])
+    this.router.navigate([selected.id], { relativeTo: this.activatedRoute });
   }
   isSelected(phrase: Phrase): boolean {
     return phrase.id === this.selectedID;

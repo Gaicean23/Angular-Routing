@@ -23,4 +23,10 @@ export class PhraseDetailsComponent implements OnInit {
     });
   }
 
+  goToPhraseList(): void {
+    const phraseID = this.phrase ? this.phrase.id : null;
+
+    this.router.navigate(['../', { id: phraseID, param1: 'test1', param2: '123' }]);
+  }
+
 }
