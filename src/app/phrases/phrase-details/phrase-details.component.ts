@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/auth.service';
 import { CanComponentDeactivate } from 'src/app/shared/can-deactivate-guard.service';
@@ -23,17 +23,10 @@ export class PhraseDetailsComponent implements OnInit, CanComponentDeactivate {
     public authService: AuthService) { }
 
   ngOnInit(): void {
-
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.svc
-        .getPhrase(+params.id)
-        .then(res => {
-          this.phrase = res;
-          if (this.phrase) {
-            this.editValue = this.phrase.value;
-            this.editLanguage = this.phrase.language;
-          }
-        });
+    this.activatedRoute.data.subscribe((data: { phrase: Phrase }) => {
+      this.phrase = data.phrase;
+      this.editValue = this.phrase.value;
+      this.editLanguage = this.phrase.language;
     });
   }
 
@@ -69,4 +62,3 @@ export class PhraseDetailsComponent implements OnInit, CanComponentDeactivate {
 }
 
 
-//1.15.00
